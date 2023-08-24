@@ -1,0 +1,34 @@
+CREATE TABLE incidencias (
+  id INT NULL AUTO_INCREMENT,
+  titulo VARCHAR(255) NULL,
+  descripcion VARCHAR(255) NULL,
+  estado VARCHAR(255) DEFAULT 'PENDIENTE',
+  PRIMARY KEY (id));
+ 
+CREATE TABLE usuarios (
+  id INT NULL AUTO_INCREMENT,
+  usuario VARCHAR(255) NULL,
+  password VARCHAR(45) NULL,
+  role VARCHAR(255) NULL,
+  PRIMARY KEY (id));
+
+select * from usuarios;
+SELECT id, usuario, role FROM usuarios WHERE usuario = 'garem' AND password = 'garem123';
+
+CREATE VIEW lista_incidencias AS
+SELECT * FROM incidencias
+order by estado asc;
+
+create view incidencia_pendiente as
+SELECT * FROM incidencias 
+where estado = 'PENDIENTE';
+
+create view incidencia_aceptada as
+SELECT * FROM incidencias 
+where estado = 'ACEPTADO';
+
+select * from incidencia_pendiente;
+
+select * from lista_incidencias;
+
+select * from incidencia_aceptada;
